@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    {{ parent() }} - Modifier une personne 
+{% endblock %}
+{% block body %}
+<div class="d-flex justify-content-between align-items-start mt-5">
+    <h1>Modifier {{ person.name }}</h1>
+    <a href="{{ path('person_delete', {'id': person.id}) }}" class="btn btn-danger" onclick="return confirm('Confirmez la suppression')">
+        Supprimer
+    </a>
+</div>
+
+{{ form_start(personForm) }}
+{{ form_widget(personForm) }}
+<button class="btn btn-primary" type="submit">Valider</button>
+{{ form_end(personForm)}}
+{% endblock %}

@@ -1,0 +1,93 @@
+.homepage {
+    width: 100%;
+  
+}
+
+.homepage__movies {
+    width: 75%;
+    margin:auto;
+}
+
+.homepage__movies h1 {
+    padding-top: 0.5em;
+    text-align: center;
+    font-style: italic;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+.homepage__movies p {
+    font-size: 12px;
+    width: 95%;
+}
+
+.homepage__movies__article {
+    display: inline-block;
+    width: 29%;
+    position: relative;
+    margin: 0.5em;
+}
+
+.resize_homepage {
+    width: 100%;
+    margin: auto;
+
+}
+.resize_view {
+    width: 30%;
+}
+
+.movie__info {
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    border: 1px solid rgba(142, 136, 153, 0.6);
+    background-color: rgba(142, 136, 153, 0.6);
+    width: 100%;
+}
+
+.movie__info a {
+    color: rgb(1, 8, 15);
+    text-decoration: none;
+}
+.movie__info ul {
+    
+    padding-inline-start: 0.3em;
+    line-height: 0.7em;
+}
+
+.movie__info li {
+    list-style: none;
+    margin-top: 5px;
+  
+}
+
+.homepage__posts {
+    width: 50%;
+}
+
+.list__movies {
+    width: 100%;
+margin: auto, 0px;
+}
+
+
+.about_movie {
+    display: flex;
+    flex-direction: row-reverse;
+
+
+}
+
+.about_movie-info {
+    width: 60%;
+
+}
+
+.about_movie-picture {
+    width: 40%;
+}
+
+.resize_view {
+    width: 70%;
+    
+
+}

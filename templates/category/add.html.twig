@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Créer une catégorie 
+{% endblock %}
+
+{% block body %}
+<h1> Ajout d'une nouvelle catégorie</h1>
+
+{{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+{{ form_widget(form) }}
+<button class="btn btn-primary" type="submit">Valider</button>
+{{ form_end(form) }}
+
+{% endblock %}
+
+

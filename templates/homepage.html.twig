@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+
+
+{% block body %}
+
+<div class="homepage">
+    <div class="homepage__movies">
+        <h1> Passé, présent, futur </h1>
+        <p> Chaque jour, vous retrouverez 3 articles: le premier concernant un film qui n'est plus en salle, le second
+            portera sur un film que vous pouvez voir en ce moment et le dernier, sur une prochaine sortie </p>
+        {% for movie in movies %}
+        <div class="homepage__movies__article">
+            <a href="{{path('movie_view', {id: movie.id })}}"><img class="resize_homepage"
+            src="{{ asset('uploads/images/' ~   movie.imageFilename) }}"></a>  
+            <div class="movie__info" >
+            <a href="{{path('movie_view', {id: movie.id})}}">
+            <ul>
+                <li>Film: {{movie.title}} </li>
+                <li>Année: {{movie.releasedate | date('Y')}}</li>
+                <li>Genre:  {% for category in movie.categories %} {{category.label}}  {% endfor %}  </li>
+            </ul>
+            </a>
+        </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="homepage__posts">
+    {% for post in posts %}
+        <div class="homepage__post">
+           <h3><a href="{{path('post_show',{id: post.id}) }}">{{post.title}}</a></h3>
+                <p>{{post.content | slice (0, 150)}}... <strong><a href="{{path('post_show', {id: post.id}) }}">Lire la suite </a></strong></p>
+                <p> <em>Publiée le {{post.date | date ('d/m/Y')}}
+        </div>
+       {% endfor %}
+    </div>
+</div>
+        {% endblock %}

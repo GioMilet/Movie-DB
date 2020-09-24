@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Films et réalisateurs ayant reçu l'Award {{award.name}}:</h1>
+
+<p><a href="{{path('movie_view', {id: award.movie.id })}}">{{award.movie.title}}</a></p>
+
+{% endblock %}

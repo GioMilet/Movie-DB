@@ -1,0 +1,77 @@
+easy_admin:
+  site_name: 'MovieDB'
+  design:
+      brand_color: '#b30424'
+      menu:
+          - Movie
+          - Category
+          - User
+  user:
+      name_property_path: 'email'
+  entities:
+       # List the entity class name you want to manage
+      Movie:
+          class: App\Entity\Movie
+          list:
+              fields:
+                  - id
+                  - title
+                  - releaseDate
+                  - director
+          form:
+              fields:
+                  - { type: 'group', columns: 6 }
+                  - title
+                  - imageFilename
+                  - releaseDate
+                  - categories
+                  - { type: 'group', columns: 6 }
+                  - director
+                  - writers
+                  - awards
+                  - { type: 'group', columns: 12 }
+                  - {
+                      property: 'movieActors',
+                      type: 'collection',
+                      type_options: {
+                          entry_type: App\Form\MovieActorType,
+                          entry_options: { label: false },
+                          allow_add: true,
+                          by_reference: false
+                      }
+                    }
+      Category:
+          class: App\Entity\Category
+          form:
+              fields:
+                - label
+          list:
+              fields:
+                - id
+                - label
+                - createdAt
+                - updatedAt
+                - movies
+      Person:
+          class: App\Entity\Person
+      Post:
+          class: App\Entity\Post
+      Award:
+          class: App\Entity\Award
+      User:
+          class: App\Entity\User
+          form:
+              fields:
+                  - email
+                  - {
+                        property: 'roles',
+                        type: 'choice',
+                        type_options: {
+                            choices: {
+                                Utilisateur: 'ROLE_USER',
+                                Administrateur: 'ROLE_ADMIN'
+                            },
+                            expanded: true,
+                            multiple: true
+                        }
+                    }

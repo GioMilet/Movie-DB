@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Réalisateurs{% endblock %}
+
+{% block body %}
+<h1>Choisissez un réalisateur pour voir ses films: </h1>
+<ul>
+{% for person in persons %}
+<li><a href="{{path('person_view', {id: person.id})}}"> {{person.name}}</a> (né le {{person.birthDate | date('d-m-Y')}})</li>
+{% endfor %}
+</ul>
+{% endblock %}

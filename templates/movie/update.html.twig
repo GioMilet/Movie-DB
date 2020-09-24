@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="d-flex justify-content-between align-items-start mt-5">
+    <h1>Modifier {{ movie.title }}</h1>
+    <a href="{{ path('movie_delete', {'id': movie.id}) }}" class="btn btn-danger" onclick="return confirm('Confirmez la suppression')">
+        Supprimer
+    </a>
+</div>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button class="btn" type="button" onclick="createNewActorMovieForm()">Ajouter un acteur</button>
+
+<a href="{{ path('movie_view', {'id': movie.id}) }}" class="btn btn-link">Annuler</a>
+<button class="btn btn-primary" type="submit">Valider</button>
+{{ form_end(form) }}
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+const movieActorFormList = document.querySelector("#movie_movieActors");
+const prototype = movieActorFormList.dataset.prototype;
+let currentIndex = movieActorFormList.children.length;
+
+function createNewActorMovieForm() {
+    const newElement = document.createElement('div');
+    newElement.innerHTML = prototype.replace(/__name__/g, currentIndex);
+    currentIndex ++;
+    movieActorFormList.appendChild(newElement);
+}
+
+</script>
+
+{% endblock %}

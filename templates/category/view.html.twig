@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-start mt-5">
+
+<h1>Catégorie {{category.label}}:</h1>
+<a href="{{ path('category_update', {'id': category.id}) }}" class="btn btn-primary">Modifier</a>
+</div>
+<h3 class="mt-5">Films</h3>
+<div class="list-group">
+    {% for movie in category.movies %}
+    <a href="{{ path('movie_view', {'id': movie.id}) }}" class="list-group-item list-group-item-action">
+        {{ movie.title }} ({{ movie.releaseDate | date('Y') }})
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

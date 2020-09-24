@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent()}} - Catégories {% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-between align-items-start mt-5">
+
+<h2>Choisissez une catégories pour retrouver une liste de film de ce genre !</h2>
+</div>
+<p>Votre catégorie préférée ne se trouve parmis celle proposée? Et si vous l'ajoutiez en passant <a href="{{path('category_add') }}">ici</a></p>
+<div class="list-group mt-5">{% for category in categories %}
+<a href="{{ path('category_view', {id: category.id}) }}" class="list-group-item list-group-item-action">{{category.label}}</a>
+{% endfor %}
+</div>
+{% endblock %}
+
+
+
+

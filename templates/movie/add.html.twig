@@ -1,0 +1,31 @@
+ 
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Ajouter un film</h1>
+
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button class="btn" type="button" onclick="createNewActorMovieForm()">Ajouter un acteur</button>
+<button class="btn btn-primary" type="submit">Valider</button>
+{{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+const movieActorFormList = document.querySelector("#movie_movieActors");
+const prototype = movieActorFormList.dataset.prototype;
+let currentIndex = movieActorFormList.children.length;
+
+function createNewActorMovieForm() {
+    const newElement = document.createElement('div');
+    newElement.innerHTML = prototype.replace(/__name__/g, currentIndex);
+    currentIndex ++;
+    movieActorFormList.appendChild(newElement);
+}
+
+</script>
+
+{% endblock %}

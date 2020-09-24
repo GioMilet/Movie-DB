@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent()}} - Award {% endblock %}
+
+{% block body %}
+
+<h2>Choisissez un Award pour retrouver les réalisateurs et les films qui ont obtenu cette récompense</h2>
+
+<ul>
+{% for award in awards %}
+<li><a href="{{ path('award_view', {id: award.id}) }}">{{award.name}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

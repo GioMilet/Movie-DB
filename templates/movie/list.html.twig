@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Liste des films{% endblock %}
+
+{% block body %}
+
+<h1>Choisissez un film pour avoir plus d'info le concernant</h1>
+<p>Si votre film préféré n'est pas dans la liste, ajoutez le <a href="{{path('movie_add')}}">ici </a>
+<div class="list__movies"> 
+
+
+
+ {% for movie in movies %}
+        <div class="homepage__movies__article">
+            <a href="{{path('movie_view', {id: movie.id })}}"><img class="resize_homepage"
+            src="{{ asset('uploads/images/' ~   movie.imageFilename) }}"></a>  
+            <div class="movie__info" >
+            <a href="{{path('movie_view', {id: movie.id})}}">
+            <ul>
+                <li>Film: {{movie.title}} </li>
+                <li>Année: {{movie.releasedate | date('Y')}}</li>
+                <li>Genre:  {% for category in movie.categories %} {{category.label}}  {% endfor %}  </li> 
+            </ul>
+            </a>
+        </div>
+            </div>
+        {% endfor %}
+ 
+    </div> 
+{% endblock %}
+
